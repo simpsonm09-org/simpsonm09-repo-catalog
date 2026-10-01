@@ -5,6 +5,7 @@ Index for the catalog.
 ## Guides
 
 - [Architecture](architecture.md) shows how the roster, the standard, and the catalog fit together.
+- [Roadmap](roadmap.md) holds the fleet goals and the open work.
 
 ## Reference
 
