@@ -1,0 +1,77 @@
+{
+  "org": "simpsonm09-org",
+  "repos": [
+    {
+      "name": "simpsonm09-repo-standard",
+      "tier": "standard",
+      "adopted": true,
+      "rationale": "Owns the standard, the checkers, the reusable workflows, and the rulesets."
+    },
+    {
+      "name": "simpsonm09-repo-template",
+      "tier": "template",
+      "adopted": true,
+      "rationale": "Reference implementation of the standard."
+    },
+    {
+      "name": "simpsonm09-repo-catalog",
+      "tier": "catalog",
+      "adopted": true,
+      "rationale": "Fleet roster and policy."
+    },
+    {
+      "name": "simpsonm09-maxstack",
+      "tier": "plugin",
+      "adopted": true,
+      "rationale": "Plugin publishing and workspace install."
+    },
+    {
+      "name": "pstack-opencode-plugin",
+      "tier": "plugin",
+      "adopted": true,
+      "rationale": "PStack plugin layer."
+    },
+    {
+      "name": "simpsonm09-org-opencode-plugin",
+      "tier": "plugin",
+      "adopted": true,
+      "rationale": "Organization config layer for agents, skills, and MCP."
+    },
+    {
+      "name": "simpsonm09-personal-opencode-plugin",
+      "tier": "plugin",
+      "adopted": true,
+      "rationale": "Personal config layer."
+    },
+    {
+      "name": "simpsonm09-dev-setup",
+      "tier": "tooling",
+      "adopted": true,
+      "rationale": "Developer workspace tooling and machine setup."
+    },
+    {
+      "name": "simpsonm09-browser-calculator",
+      "tier": "feature",
+      "adopted": true,
+      "rationale": "Feature repository used to exercise the standard end to end."
+    },
+    {
+      "name": "simpsonm09-postman-test-utils",
+      "tier": "feature",
+      "adopted": true,
+      "rationale": "Feature repository for Postman test utilities."
+    },
+    {
+      "name": "simpsonm09-playwright-api-wrapper",
+      "tier": "feature",
+      "adopted": true,
+      "rationale": "Feature repository for a Playwright API wrapper."
+    },
+    {
+      "name": "simpsonm09-openclaw-homelab",
+      "tier": "feature",
+      "adopted": true,
+      "rationale": "Feature repository for the homelab."
+    }
+  ]
+}

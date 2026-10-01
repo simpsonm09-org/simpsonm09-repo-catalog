@@ -1,0 +1,20 @@
+{
+  "ignore": [
+    {
+      "name": "The_Gaming_Index_Video_Game_Database_Final_Capstone",
+      "reason": "Archived capstone project, outside the fleet."
+    },
+    {
+      "name": "playwright-api-wrapper-archive",
+      "reason": "Archived migration source for playwright-api-wrapper."
+    },
+    {
+      "name": "pdf_field_automation_acrobat",
+      "reason": "Legacy public repository that predates the standard."
+    },
+    {
+      "name": "steam_wishlist_cleanup",
+      "reason": "Legacy public repository that predates the standard."
+    }
+  ]
+}
