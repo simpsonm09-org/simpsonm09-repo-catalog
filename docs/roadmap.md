@@ -36,3 +36,4 @@ GitHub; this page holds goals and open work.
 The standard changes in `simpsonm09-repo-standard` first, then roll out to the fleet
 through same-repo pull requests on the organization. Each wave ends in a verified state,
 checked with `check-repo` on every repository.
+
