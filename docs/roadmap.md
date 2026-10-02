@@ -19,6 +19,8 @@ GitHub; this page holds goals and open work.
   backs the pull request checklist.
 - CodeQL on the code repositories, and a report-only Trivy license scan.
 - Dependabot as the single updater.
+- Kotlin and Java in the shared lint table, so a JVM repository lints through the same job.
+- A generated-OpenAPI contract rule: an API repository emits its document from annotations, and the checker fails a hand edit or a missing `spec` recipe.
 
 ## Open
 
