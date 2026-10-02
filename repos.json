@@ -72,6 +72,12 @@
       "tier": "feature",
       "adopted": true,
       "rationale": "Feature repository for the homelab."
+    },
+    {
+      "name": "simpsonm09-pokeapi-wrapper",
+      "tier": "feature",
+      "adopted": true,
+      "rationale": "Feature repository wrapping PokeAPI, and the reference implementation of the generated-OpenAPI contract rule."
     }
   ]
 }
