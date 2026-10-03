@@ -1,12 +1,12 @@
 {
   "org": "simpsonm09-org",
   "agentAccessDefaults": {
-    "standard": "read",
-    "template": "read",
-    "catalog": "read",
+    "standard": "propose",
+    "template": "propose",
+    "catalog": "propose",
     "plugin": "propose",
     "tooling": "propose",
-    "feature": "propose",
+    "feature": "merge",
     "legacy": "none"
   },
   "repos": [

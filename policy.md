@@ -59,12 +59,12 @@ The tier defaults.
 
 | Tier | Default |
 | --- | --- |
-| `standard` | `read` |
-| `template` | `read` |
-| `catalog` | `read` |
+| `standard` | `propose` |
+| `template` | `propose` |
+| `catalog` | `propose` |
 | `plugin` | `propose` |
 | `tooling` | `propose` |
-| `feature` | `propose` |
+| `feature` | `merge` |
 | `legacy` | `none` |
 
 ## What does not belong here
