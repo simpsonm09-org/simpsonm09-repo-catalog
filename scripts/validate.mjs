@@ -6,6 +6,9 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
+const TIERS = ['standard', 'template', 'catalog', 'plugin', 'tooling', 'feature', 'legacy'];
+const LEVELS = ['none', 'read', 'propose', 'merge', 'full'];
+
 function readJson(name) {
   return JSON.parse(readFileSync(join(ROOT, name), 'utf8'));
 }
@@ -47,8 +50,28 @@ for (const entry of live) {
   }
 }
 
+const defaults = roster.agentAccessDefaults ?? {};
+for (const tier of TIERS) {
+  if (!(tier in defaults)) errors.push(`agentAccessDefaults is missing the ${tier} tier`);
+}
+for (const [tier, level] of Object.entries(defaults)) {
+  if (!TIERS.includes(tier)) errors.push(`agentAccessDefaults has an unknown tier: ${tier}`);
+  if (!LEVELS.includes(level)) errors.push(`agentAccessDefaults.${tier} is not a level: ${level}`);
+}
+
+const levelCounts = new Map();
+for (const entry of roster.repos) {
+  if (!TIERS.includes(entry.tier)) errors.push(`${entry.name} has an unknown tier: ${entry.tier}`);
+  if (entry.agentAccess !== undefined && !LEVELS.includes(entry.agentAccess)) {
+    errors.push(`${entry.name} has an unknown agentAccess: ${entry.agentAccess}`);
+  }
+  const level = entry.agentAccess ?? defaults[entry.tier];
+  if (LEVELS.includes(level)) levelCounts.set(level, (levelCounts.get(level) ?? 0) + 1);
+}
+
 if (errors.length > 0) {
   for (const error of errors) process.stderr.write(`validate: ${error}\n`);
   process.exit(1);
 }
-process.stdout.write(`validate: ok (${roster.repos.length} roster, ${ignore.ignore.length} ignored, ${live.length} in ${org})\n`);
+const levels = LEVELS.filter((level) => levelCounts.has(level)).map((level) => `${level} ${levelCounts.get(level)}`).join(', ');
+process.stdout.write(`validate: ok (${roster.repos.length} roster, ${ignore.ignore.length} ignored, ${live.length} in ${org}; ${levels})\n`);

@@ -32,6 +32,9 @@ GitHub; this page holds goals and open work.
   image repositories, and an end-to-end job for the Playwright and Postman repositories.
 - Releases. Adopt the release workflow and a changelog for the artifacts that publish.
 - Plugin identifiers. Align the OpenCode plugin ids with the repository names.
+- Agent access. Enforce the per-repository levels in `repo-standard` with a dedicated
+  agent identity, ruleset bypass modes, and the required approval that makes `propose`
+  real.
 
 ## How open work lands
 

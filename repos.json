@@ -1,5 +1,14 @@
 {
   "org": "simpsonm09-org",
+  "agentAccessDefaults": {
+    "standard": "read",
+    "template": "read",
+    "catalog": "read",
+    "plugin": "propose",
+    "tooling": "propose",
+    "feature": "propose",
+    "legacy": "none"
+  },
   "repos": [
     {
       "name": "simpsonm09-repo-standard",

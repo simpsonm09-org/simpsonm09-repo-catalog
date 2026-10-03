@@ -31,6 +31,42 @@ Every organization repository is either in `repos.json` or in `ignore.json` with
 reason. `scripts/validate.mjs` fails when the roster and the organization disagree,
 so a new repository cannot appear unnoticed.
 
+## Agent access
+
+Each repository states how much an AI agent may do against the organization
+repository. The value is intent. GitHub has no such setting, and enforcement lives in
+[`repo-standard`](https://github.com/simpsonm09-org/simpsonm09-repo-standard), not
+here. Until an agent runs as an identity separate from the maintainer, the value is a
+documented policy, not a control.
+
+`repos.json` sets a default per tier in `agentAccessDefaults`, and a repository may
+override it with `agentAccess`. The effective level is `agentAccess` when present,
+otherwise the tier default.
+
+| Level | Agent may | Mechanism once enforced |
+| --- | --- | --- |
+| `none` | Nothing. No credential reaches the organization repository. | No identity grant. |
+| `read` | Clone, fetch, read. | Read-only collaborator or a read-only app install. |
+| `propose` | Push a branch and open a pull request, never merge. | Write access, the agent absent from the ruleset bypass list, and at least one required approval the agent cannot give. |
+| `merge` | Merge its own green pull requests, with no direct push to `main`. | The agent in the bypass list with mode `pull_request`. |
+| `full` | Push to `main` or change settings. | Bypass mode `always`, or an admin role. |
+
+`propose` is only real when `required_approving_review_count` is at least `1`. The
+`protect-main` ruleset sets it to `0` today for the solo maintainer, so making
+`propose` meaningful is a `repo-standard` change.
+
+The tier defaults.
+
+| Tier | Default |
+| --- | --- |
+| `standard` | `read` |
+| `template` | `read` |
+| `catalog` | `read` |
+| `plugin` | `propose` |
+| `tooling` | `propose` |
+| `feature` | `propose` |
+| `legacy` | `none` |
+
 ## What does not belong here
 
 Visibility, settings, topics, ruleset names, and CI conclusions are state. Read them
