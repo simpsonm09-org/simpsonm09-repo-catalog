@@ -15,6 +15,7 @@ report, so the checks have something to check against.
 | `plugin` | A published plugin layer that consumes the standard. |
 | `tooling` | Developer and machine tooling that consumes the standard. |
 | `feature` | An application that consumes the standard. |
+| `fixture` | A conformance repository used to validate the framework, not a product. |
 | `legacy` | A repository kept for reference but outside the fleet. |
 
 ## Expectations
@@ -65,6 +66,7 @@ The tier defaults.
 | `plugin` | `propose` |
 | `tooling` | `propose` |
 | `feature` | `merge` |
+| `fixture` | `read` |
 | `legacy` | `none` |
 
 ## What does not belong here

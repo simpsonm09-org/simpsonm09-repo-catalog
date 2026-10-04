@@ -7,6 +7,7 @@
     "plugin": "propose",
     "tooling": "propose",
     "feature": "merge",
+    "fixture": "read",
     "legacy": "none"
   },
   "repos": [
@@ -87,6 +88,34 @@
       "tier": "feature",
       "adopted": true,
       "rationale": "Feature repository wrapping PokeAPI, and the reference implementation of the generated-OpenAPI contract rule."
+    },
+    {
+      "name": "simpsonm09-fixture-nest",
+      "tier": "fixture",
+      "adopted": true,
+      "agentAccess": "propose",
+      "rationale": "NestJS item CRUD fixture; validates the propose level."
+    },
+    {
+      "name": "simpsonm09-fixture-go",
+      "tier": "fixture",
+      "adopted": true,
+      "agentAccess": "full",
+      "rationale": "Go item CRUD fixture; validates the full level."
+    },
+    {
+      "name": "simpsonm09-fixture-rust",
+      "tier": "fixture",
+      "adopted": true,
+      "agentAccess": "merge",
+      "rationale": "Rust item CRUD fixture; validates the merge level."
+    },
+    {
+      "name": "simpsonm09-fixture-dotnet",
+      "tier": "fixture",
+      "adopted": true,
+      "agentAccess": "read",
+      "rationale": "C# item CRUD fixture; validates the read level."
     }
   ]
 }

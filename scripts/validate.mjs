@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
-const TIERS = ['standard', 'template', 'catalog', 'plugin', 'tooling', 'feature', 'legacy'];
+const TIERS = ['standard', 'template', 'catalog', 'plugin', 'tooling', 'feature', 'fixture', 'legacy'];
 const LEVELS = ['none', 'read', 'propose', 'merge', 'full'];
 
 function readJson(name) {
