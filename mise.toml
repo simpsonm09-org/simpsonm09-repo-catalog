@@ -2,7 +2,6 @@
 # https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/task-runner.md
 
 [tools]
-"aqua:biomejs/biome" = "2.5.14"
 
 # Task runner
 "aqua:casey/just" = "1.58.0"
@@ -13,6 +12,7 @@
 
 # Linters
 "aqua:grafana/flint" = "0.22.14"
+biome = "2.5.14"
 
 [env]
 FLINT_CONFIG_DIR = ".github/config"
