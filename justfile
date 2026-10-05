@@ -30,6 +30,9 @@ test:
 # Lint and test.
 verify: lint test
 
+# Run the Biome complexity gate over the repository.
+complexity:
+    mise exec -- biome lint .
 
 # Prune remote-tracking refs and delete local branches merged into main.
 prune:
