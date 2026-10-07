@@ -60,6 +60,12 @@
       "rationale": "Developer workspace tooling and machine setup."
     },
     {
+      "name": "simpsonm09-machine-inventory",
+      "tier": "tooling",
+      "adopted": true,
+      "rationale": "Non-identifying inventory of the fleet machine classes, counts, and buckets."
+    },
+    {
       "name": "simpsonm09-browser-calculator",
       "tier": "feature",
       "adopted": true,
