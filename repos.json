@@ -42,13 +42,13 @@
       "rationale": "PStack plugin layer."
     },
     {
-      "name": "simpsonm09-org-opencode-plugin",
+      "name": "simpsonm09-org-ai-plugin",
       "tier": "plugin",
       "adopted": true,
       "rationale": "Organization config layer for agents, skills, and MCP."
     },
     {
-      "name": "simpsonm09-personal-opencode-plugin",
+      "name": "simpsonm09-personal-ai-plugin",
       "tier": "plugin",
       "adopted": true,
       "rationale": "Personal config layer."
