@@ -1,4 +1,4 @@
 {
   "readme": true,
-  "diagrams": ["docs/architecture.md"]
+  "diagrams": ["docs/architecture.md", "docs/fleet-architecture.md"]
 }
