@@ -17,3 +17,5 @@ reason. The validator fails when the roster and the organization disagree, so a 
 repository must be cataloged or explicitly ignored. Conformance is not the catalog's
 job. Each repository checks itself against the standard. See
 [`repo-standard`](https://github.com/simpsonm09-org/simpsonm09-repo-standard) for the checks.
+
+The wider fleet view, with the four groups and the open gaps, is in [Fleet architecture](fleet-architecture.md).
