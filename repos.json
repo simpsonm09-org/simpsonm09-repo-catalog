@@ -36,12 +36,6 @@
       "rationale": "Plugin publishing and workspace install."
     },
     {
-      "name": "pstack-opencode-plugin",
-      "tier": "plugin",
-      "adopted": true,
-      "rationale": "PStack plugin layer."
-    },
-    {
       "name": "simpsonm09-org-ai-plugin",
       "tier": "plugin",
       "adopted": true,
