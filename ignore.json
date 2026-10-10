@@ -5,6 +5,10 @@
       "reason": "Archived capstone project, outside the fleet."
     },
     {
+      "name": "pstack-opencode-plugin",
+      "reason": "Archived. The PStack layer now comes from the pstack-claude fork."
+    },
+    {
       "name": "pdf_field_automation_acrobat",
       "reason": "Legacy public repository that predates the standard."
     },
