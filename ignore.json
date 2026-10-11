@@ -1,6 +1,10 @@
 {
   "ignore": [
     {
+      "name": ".github",
+      "reason": "Public organization profile only; no application or shared fleet tooling."
+    },
+    {
       "name": "The_Gaming_Index_Video_Game_Database_Final_Capstone",
       "reason": "Archived capstone project, outside the fleet."
     },
