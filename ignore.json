@@ -15,6 +15,10 @@
     {
       "name": "steam_wishlist_cleanup",
       "reason": "Legacy public repository that predates the standard."
+    },
+    {
+      "name": ".github",
+      "reason": "Organization profile repository. It holds the public profile README and no code."
     }
   ]
 }
