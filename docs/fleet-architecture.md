@@ -191,7 +191,7 @@ Every repository outside the three groups above is a feature repository. It cons
 | What a new repository starts with | `simpsonm09-repo-template` |
 | Product behavior | The feature repository |
 
-## Gaps as of 2026-10-10
+## Gaps as of 2026-10-11
 
 Each row is a difference between the target above and what the repositories hold today. Move a row to the owning repository's roadmap when work starts.
 
@@ -201,17 +201,18 @@ Each row is a difference between the target above and what the repositories hold
 | T3 defaults held in maxstack | The instances are a table in `docs/t3-setup.md` and are set by hand. | maxstack |
 | T3 snapshot in the workspace | T3 settings live in the user profile. The dev-setup snapshot records only whether that folder exists. | maxstack |
 | maxstack installs T3 Code and the harness CLIs | `tools.yaml` in dev-setup lists `t3-code`, `opencode`, and `claude-code`. The Brewfile also lives in dev-setup. | maxstack, dev-setup |
-| Workspace generated at any target | The installer takes a `-Workspace` argument, but its default is still one fixed path. | maxstack |
-| One lifecycle command on every OS | The installer is PowerShell. It has `-Apply`, `-Status`, `-Remove`, and `-Uninstall`, and it selects runtimes and layers with `-Runtimes` and `-Layers`. Per-layer sources are set with `-LayerSource` on `main`, and as `-Source` on `feat/update-sources`. `-Update` and `-Update -Check` are in review on maxstack branch `feat/update-sources`. The macOS wrappers are untested. | maxstack |
+| Workspace generated at any target | Discovery takes `-Workspace`, then `MAXSTACK_WORKSPACE`, then a marker file, then the script layout. The legacy fixed path is the last step. It prints a warning, and the fallback is removed after one release. | maxstack |
+| One settings file as the input | `maxstack.settings.json` selects runtimes and layers. Per-layer sources in the file are recorded but not applied. The T3 snapshot, the T3 defaults, and harness CLI installs are not built yet. | maxstack |
+| One lifecycle command on every OS | The installer is PowerShell and declares itself Windows-only. It has `-Apply`, `-Status`, `-Remove`, `-Uninstall`, `-Update`, and `-Update -Check`. It selects runtimes and layers with `-Runtimes` and `-Layers`, and it sets layer sources with `-Source` or `-LayerSource`. The macOS wrappers are untested. | maxstack |
+| Generated harness config from one source | A standalone neutral layer generator writes skills for `claude`, `copilot`, `opencode`, and `pi`, and OpenCode MCP servers for `opencode` only. The installer does not call it. Codex, Cursor, and Antigravity get nothing. Instructions, agents, and hooks are not generated yet. | maxstack |
 | `.envrc` retired | The workspace root has an `.envrc`, dev-setup ships `settings/.envrc.example`, and both repositories' docs call it the secret-loading boundary. These files also need a follow-up when `.envrc` is retired: org-ai-plugin `skills/local-services` and `skills/service-integrations`, personal-ai-plugin `skills/dev-tools` and `skills/integrations-personal`, and maxstack `docs/relationship.md`. | dev-setup |
-| Roster matches the groups | `repos.json` lists `pstack-opencode-plugin` as a plugin layer. The pstack layer now comes from the `pstack-claude` fork. | repo-catalog |
-| Each model path is in the ownership record | The local model server and its Pi provider file are not owned by maxstack's ownership record yet. | maxstack |
+| Each model path is in the ownership record | The installer writes the Pi wrappers and records them in `stack.lock.json`. It uses a Pi installed in the workspace when one exists. The local model server and its Pi provider file are not owned by maxstack's ownership record yet. | maxstack |
 | The gate runs in every harness that can run a pre-tool hook | The gate runs in Claude Code, Copilot, OpenCode, and Pi only. There is no gate on Codex, Cursor, or Antigravity. See G1 in the [parity matrix](https://github.com/simpsonm09-org/simpsonm09-maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
 | pstack's own pre-tool checks run on every OS | The Copilot PreToolUse hook is a no-op stub on Windows for pstack's own checks, so the file-read and subagent-model checks do not run there. See G2 in the [parity matrix](https://github.com/simpsonm09-org/simpsonm09-maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
 | The gate fails closed on every path | The gate has paths that fail open silently. Claude allows a call when its hook is killed at the timeout, and a call runs with no gate and no error when `node` is not on the hook shell's PATH. See G3 in the [parity matrix](https://github.com/simpsonm09-org/simpsonm09-maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
 | The gate's live path is proven on every harness that runs it | The OpenCode gate path is not proven end to end. OpenCode rewrites a denied command and does not block it, and the rewrite is not measured live. See G4 in the [parity matrix](https://github.com/simpsonm09-org/simpsonm09-maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
 
-**Sequence.** The work runs in this order. The update and per-layer sources work comes first. Then come the settings file and a workspace at any target, then the read-only T3 snapshot and the drift report. Harness CLI installs follow, with ownership. maxstack records only the CLIs it installed, and it never removes a CLI the person installed. macOS and the generator come next. The generator covers skills, instructions, and MCP first, then agents and hooks. Cursor is the first new harness.
+**Sequence.** The work runs in this order. First, per-layer sources in the settings file. Then the read-only T3 snapshot and the drift report. Then harness CLI installs, with ownership. maxstack records only the CLIs it installed, and it never removes a CLI the person installed. Then T3 apply. Then macOS. Then the generator is wired into the installer. Then agents and hooks conversion. Cursor is the first new harness.
 
 ## Open decisions
 
