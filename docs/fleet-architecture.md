@@ -80,14 +80,14 @@ flowchart LR
 
     Claude --> Anthropic["Anthropic subscription"]
     Copilot --> GitHub["GitHub Copilot"]
-    OpenCode --> OpenCodeGo["OpenCode Go and API keys"]
+    OpenCode --> OpenCodeFree["OpenCode Zen and OpenRouter free models"]
     Pi --> LocalModel["Local model server"]
     Codex --> OpenAI["OpenAI"]
     Cursor --> CursorSub["Cursor"]
     Antigravity --> Google["Google"]
 ```
 
-Claude Code stays on the Anthropic subscription, and Copilot stays on GitHub. OpenCode serves OpenCode Go and API keys. Pi serves local models only, through a llama.cpp server on the same machine. Pi is the validation harness. It carries no third-party Pi extensions. It loads only the org gate and pstack's own Pi extension.
+Claude Code stays on the Anthropic subscription, and Codex on the OpenAI one. Those are the two paid accounts. Every other harness runs on free usage: Copilot, Cursor and Antigravity on their free plans, and OpenCode on the free OpenCode Zen models and the zero-priced OpenRouter models. OpenCode Go is retired. Pi serves local models only, through a llama.cpp server on the same machine. Pi is the validation harness. It carries no third-party Pi extensions. It loads only the org gate and pstack's own Pi extension.
 
 The three plugin layers load in order, and a later layer wins where two layers set the same value.
 
