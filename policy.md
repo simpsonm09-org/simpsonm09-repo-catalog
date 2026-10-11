@@ -47,14 +47,20 @@ otherwise the tier default.
 | Level | Agent may | Mechanism once enforced |
 | --- | --- | --- |
 | `none` | Nothing. No credential reaches the organization repository. | No identity grant. |
-| `read` | Clone, fetch, read. | Read-only collaborator or a read-only app install. |
+| `read` | Clone, fetch, read. | No agent App installation. The standard gives `none` and `read` no installation. |
 | `propose` | Push a branch and open a pull request, never merge. | Write access, the agent absent from the ruleset bypass list, and at least one required approval the agent cannot give. |
 | `merge` | Merge its own green pull requests, with no direct push to `main`. | The agent in the bypass list with mode `pull_request`. |
-| `full` | Push to `main` or change settings. | Bypass mode `always`, or an admin role. |
+| `full` | Push to `main` or change settings. | The agent in the bypass list with mode `always`. The agent App requests no `administration` permission, so it cannot change settings or rulesets. |
 
-`propose` is only real when `required_approving_review_count` is at least `1`. The
-`protect-main` ruleset sets it to `0` today for the solo maintainer, so making
-`propose` meaningful is a `repo-standard` change.
+`propose` needs at least one required approval that the agent cannot give. The
+standard's committed [`protect-main.json`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/rulesets/protect-main.json)
+sets `required_approving_review_count` to `1`. Its only bypass actor is
+`OrganizationAdmin` in `pull_request` mode. This describes the committed file, not
+the live GitHub ruleset, which this catalog does not read. The agent App's bypass
+entry is not in that file. The standard's
+[`governance guide`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/governance.md)
+and its [`agent-access guide`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/features/agent-access.md)
+describe the App and the drift check.
 
 The tier defaults.
 
