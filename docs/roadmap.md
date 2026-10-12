@@ -17,7 +17,7 @@ GitHub; this page holds goals and open work.
 - The standard, the reusable workflows, the rulesets, and the two checkers.
 - The gates: signed commits and the `test` check are required, and a definition of done
   backs the pull request checklist.
-- CodeQL on the code repositories, and a report-only Trivy license scan.
+- A report-only Trivy license scan.
 - Dependabot as the single updater.
 - Kotlin and Java in the shared lint table, so a JVM repository lints through the same job.
 - A generated-OpenAPI contract rule: an API repository emits its document from annotations, and the checker fails a hand edit or a missing `spec` recipe.
@@ -29,15 +29,30 @@ GitHub; this page holds goals and open work.
 - Language linting. Pin the per-language linters and formatters in each repository's
   `mise.toml` and run them through the shared lint job. See the standard's
   [`linting`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/linting.md).
-- Coverage. The standard's `coverage` gate checks changed lines at 80 percent. Adopt
-  the shared coverage workflow on each code repository that does not call it yet.
+- CodeQL. A repository carries it when it has executable source in a language CodeQL
+  supports. It is never a required check. It is not yet on `simpsonm09-maxstack`,
+  `simpsonm09-dev-setup`, `simpsonm09-fixture-nest`, `simpsonm09-fixture-go`,
+  `simpsonm09-fixture-rust`, `simpsonm09-fixture-dotnet`, `simpsonm09-machine-inventory`,
+  or `simpsonm09-repo-template`. See the standard's
+  [`automation`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/automation.md#codeql).
+- Coverage. A repository with a coverage job requires `coverage / coverage`. The two
+  records repositories, `simpsonm09-repo-catalog` and `simpsonm09-machine-inventory`, are
+  excepted. `simpsonm09-maxstack` and `simpsonm09-dev-setup` are excepted as not
+  measurable in part, and are to be revisited, because their Node code could be measured.
+  The declaration is in the standard's
+  [`exceptions.json`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/exceptions.json).
+  This repository holds no second declaration.
 - Verification. A per-repository verification skill, a container build smoke job for the
   image repositories, and an end-to-end job for the Playwright and Postman repositories.
-- Releases. Adopt the release workflow and a changelog for the artifacts that publish.
+- Releases. The release workflow and a changelog are adopted in `simpsonm09-browser-calculator`,
+  `simpsonm09-postman-test-utils`, and `simpsonm09-playwright-api-wrapper`. The other
+  feature repositories and the fixtures have neither yet.
 - Plugin identifiers. Align the OpenCode plugin ids with the repository names.
-- Agent access. Enforce the per-repository levels in `repo-standard` with a dedicated
-  agent identity and the correct ruleset bypass modes. The committed `protect-main.json`
-  requires one approval. Live deployment and the agent identity need verification.
+- Agent access. The agent identity is defined in `repo-standard`: the App manifest, the
+  `just create-agent-app` flow, the per-level bypass entry the ruleset apply script adds,
+  and the drift check `check-agent-access`. Still open: run the drift check against the
+  live rulesets, since it is local and not in CI, and confirm the App's private key is held
+  in Infisical. The committed `protect-main.json` requires one approval.
 
 ## How open work lands
 

@@ -10,7 +10,7 @@ report, so the checks have something to check against.
 | Tier | Owes |
 | --- | --- |
 | `standard` | The standard, the checkers, the reusable workflows, and the rulesets. |
-| `template` | A byte-identical reference implementation of the standard. |
+| `template` | A reference implementation of the standard. Its community files, `.aislop/config.yml`, `.github/config/flint.toml`, `trivy.yaml`, `CODEOWNERS`, and `pin-update.yml` match the standard's copies byte for byte. Its `ci.yml`, `dependabot.yml`, `mise.toml`, `justfile`, and `.gitattributes` differ by design. |
 | `catalog` | This roster and policy. |
 | `plugin` | A published plugin layer that consumes the standard. |
 | `tooling` | Developer and machine tooling that consumes the standard. |
@@ -25,6 +25,9 @@ the pinned caller CI, a `protect-main` ruleset, the owner topic, and public-repo
 secret scanning and push protection. A repository's own CI runs the `standard` check,
 which covers the tree-local files plus the settings, topics, and ruleset the
 repository can read about itself. No repository audits another.
+
+A repository may add a second test job named `test-<suffix>`. maxstack runs its installer
+suite as `test-node` on a Windows runner, in addition to `test`.
 
 ## Membership
 
@@ -61,6 +64,11 @@ entry is not in that file. The standard's
 [`governance guide`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/governance.md)
 and its [`agent-access guide`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/features/agent-access.md)
 describe the App and the drift check.
+
+The fleet agent's GitHub App entry on each repository's `protect-main` ruleset follows the
+standard's [bypass actors table](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/governance.md#bypass-actors).
+It is absent for `none`, `read`, and `propose`, mode `pull_request` for `merge`, and mode
+`always` for `full`. No actor id is recorded here.
 
 The tier defaults.
 
