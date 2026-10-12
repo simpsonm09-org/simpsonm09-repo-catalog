@@ -80,14 +80,14 @@ flowchart LR
 
     Claude --> Anthropic["Anthropic subscription"]
     Copilot --> GitHub["GitHub Copilot"]
-    OpenCode --> OpenCodeFree["OpenCode Zen and OpenRouter free models"]
+    OpenCode --> OpenCodeProviders["Providers connected in OpenCode"]
     Pi --> LocalModel["Local model server"]
     Codex --> OpenAI["OpenAI"]
     Cursor --> CursorSub["Cursor"]
     Antigravity --> Google["Google"]
 ```
 
-Claude Code uses the Anthropic subscription, and Codex uses the OpenAI one. Those are the two paid accounts. Copilot, Cursor and Antigravity run on free usage. OpenCode's supported providers for this workspace are OpenCode Zen and OpenRouter. Pi uses a locally hosted model. maxstack sets no model and no provider for any harness.
+Claude Code uses the Anthropic subscription, and Codex uses the OpenAI one. Those are the two paid accounts. Copilot, Cursor and Antigravity run on free usage. OpenCode uses the providers the user has connected in OpenCode. Pi uses a locally hosted model. maxstack sets no model and no provider for any harness.
 
 Pi is the validation harness. It loads no third-party extensions. Its only extensions are the org gate and pstack's own Pi extension. It also loads the skills of all three layers, and the user-level agent skills folder, which `PI_CODING_AGENT_DIR` does not isolate.
 
@@ -101,7 +101,7 @@ One layer is one plugin in every harness. Edit a layer in its own repository, ne
 
 ### Harness tiers
 
-The fleet sorts its harnesses into two tiers. Each harness uses its own provider, with two exceptions: OpenCode uses OpenCode Zen and OpenRouter, and Pi uses any locally hosted model.
+The fleet sorts its harnesses into two tiers. Each harness uses its own provider, with two exceptions: OpenCode uses the providers the user has connected in it, and Pi uses any locally hosted model.
 
 | Tier | Harnesses | Receives |
 | --- | --- | --- |
