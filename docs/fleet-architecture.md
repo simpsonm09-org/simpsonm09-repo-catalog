@@ -87,7 +87,9 @@ flowchart LR
     Antigravity --> Google["Google"]
 ```
 
-Claude Code stays on the Anthropic subscription, and Codex on the OpenAI one. Those are the two paid accounts. Every other harness runs on free usage: Copilot, Cursor and Antigravity on their free plans, and OpenCode on the free OpenCode Zen models and the zero-priced OpenRouter models. OpenCode Go is retired. Pi serves local models only, through a llama.cpp server on the same machine. Pi is the validation harness. It carries no third-party Pi extensions. It loads only the org gate and pstack's own Pi extension.
+Claude Code uses the Anthropic subscription, and Codex uses the OpenAI one. Those are the two paid accounts. Copilot, Cursor and Antigravity run on free usage. OpenCode's supported providers for this workspace are OpenCode Zen and OpenRouter. Pi uses a locally hosted model. maxstack sets no model and no provider for any harness.
+
+Pi is the validation harness. It loads no third-party extensions. Its only extensions are the org gate and pstack's own Pi extension. It also loads the skills of all three layers, and the user-level agent skills folder, which `PI_CODING_AGENT_DIR` does not isolate.
 
 The three plugin layers load in order, and a later layer wins where two layers set the same value.
 
@@ -96,6 +98,25 @@ The three plugin layers load in order, and a later layer wins where two layers s
 3. `simpsonm09-personal-ai-plugin` is the person and machine layer. It holds the skills that name one person's accounts and one machine.
 
 One layer is one plugin in every harness. Edit a layer in its own repository, never in an installed copy.
+
+### Harness tiers
+
+The fleet sorts its harnesses into two tiers. Each harness uses its own provider, with two exceptions: OpenCode uses OpenCode Zen and OpenRouter, and Pi uses any locally hosted model.
+
+| Tier | Harnesses | Receives |
+| --- | --- | --- |
+| First | OpenCode, Codex, Claude Code, GitHub Copilot | The full set from the layers: skills, agents, hooks or gate, MCP servers, and instructions. Each piece a harness does not receive has a documented reason. |
+| Second | Pi, Cursor, Antigravity | Skills and instructions at minimum. Gaps are recorded in the [parity matrix](https://github.com/simpsonm09-org/simpsonm09-maxstack/blob/main/docs/parity-matrix.md). |
+
+The current gaps, as [maxstack's T3 setup](https://github.com/simpsonm09-org/simpsonm09-maxstack/blob/main/docs/t3-setup.md) and the parity matrix record them:
+
+- Codex is not set up. maxstack writes no Codex runtime, config, or T3 instance.
+- Cursor and Antigravity receive none of the layers yet.
+- GitHub Copilot's pre-tool hook is a no-op on Windows for pstack's own checks (G2 in the parity matrix).
+- MCP writers are not built for Claude Code, Copilot, Pi, or Codex, so the composed MCP set is empty (G18).
+- Repo-local subagent profiles exist only for OpenCode (G19).
+
+A provider may later be reached through a local proxy, CLIProxyAPI. Nothing in the fleet assumes a direct provider endpoint or one account per harness.
 
 ## AI tooling
 
@@ -146,7 +167,7 @@ The workspace rule follows from these jobs. Settings live in the workspace, not 
 `simpsonm09-dev-setup` is for the person, not the agent. It has two jobs.
 
 - **Tooling.** It installs the tools a person uses on a machine and applies their app settings. `tools.yaml` is the one hand-edited source, and the Brewfile and the winget list render from it.
-- **Secrets consumption.** It owns `settings/.env` and the wrappers that hand a secret to one command. `with-secrets <tool>` is the human path. `with-vault --role human|agent <tool>` is the brokered path, where the tool never holds the token.
+- **Secrets consumption.** It owns `settings/.env` and the wrappers that hand a secret to one command. `with-secrets [--offline] [--require NAMES] <tool>` is the human path. Agents use `with-vault --role agent <tool>`, where the tool never holds the token.
 
 `.envrc` is retired for now. A secret reaches a command through a wrapper, not through a shell that loaded everything on entry. `settings/.env` stays, with its committed `settings/.env.example`, so the bootstrap values and the list of expected names survive. The `.env` file holds only what unlocks the secret store plus a small offline fallback, and it is never committed.
 
@@ -173,7 +194,7 @@ Every repository outside the three groups above is a feature repository. It cons
 | Kind | Repositories | Note |
 | --- | --- | --- |
 | Feature | `simpsonm09-browser-calculator`, `simpsonm09-postman-test-utils`, `simpsonm09-playwright-api-wrapper`, `simpsonm09-pokeapi-wrapper`, `simpsonm09-openclaw-homelab` | Products. |
-| Fixture | `simpsonm09-fixture-nest`, `simpsonm09-fixture-go`, `simpsonm09-fixture-rust`, `simpsonm09-fixture-dotnet` | One per agent access level. They validate the framework and are not products. |
+| Fixture | `simpsonm09-fixture-nest`, `simpsonm09-fixture-go`, `simpsonm09-fixture-rust`, `simpsonm09-fixture-dotnet` | One each for the `read`, `propose`, `merge`, and `full` levels. They validate the framework and are not products. |
 | Tooling data | `simpsonm09-machine-inventory` | Read by the org layer. |
 | Third-party forks | `t3code`, `cursor-plugins`, `Win-CodexBar` | Kept for reference and local patches. Outside the roster, and never a pull request target upstream. |
 
@@ -191,13 +212,13 @@ Every repository outside the three groups above is a feature repository. It cons
 | What a new repository starts with | `simpsonm09-repo-template` |
 | Product behavior | The feature repository |
 
-## Gaps as of 2026-10-11
+## Gaps as of 2026-10-12
 
 Each row is a difference between the target above and what the repositories hold today. Move a row to the owning repository's roadmap when work starts.
 
 | Target | Today | Owner |
 | --- | --- | --- |
-| Seven harnesses composed | `layers.json` composes four: Claude Code, Copilot, OpenCode, and Pi. T3 Code has instances for Codex, Cursor, and Antigravity, and maxstack writes nothing for them. | maxstack |
+| Seven harnesses composed | `layers.json` composes four: Claude Code, Copilot, OpenCode, and Pi. T3 Code ships provider instances for Codex, Cursor, and Antigravity. maxstack adds its own instances only for Claude, Copilot, and Pi, and writes no config for Codex, Cursor, or Antigravity. | maxstack |
 | T3 defaults held in maxstack | The instances are a table in `docs/t3-setup.md` and are set by hand. | maxstack |
 | T3 snapshot in the workspace | T3 settings live in the user profile. The dev-setup snapshot records only whether that folder exists. | maxstack |
 | maxstack installs T3 Code and the harness CLIs | `tools.yaml` in dev-setup lists `t3-code`, `opencode`, and `claude-code`. The Brewfile also lives in dev-setup. | maxstack, dev-setup |
@@ -205,7 +226,7 @@ Each row is a difference between the target above and what the repositories hold
 | One settings file as the input | `maxstack.settings.json` selects runtimes and layers. Per-layer sources in the file are recorded but not applied. The T3 snapshot, the T3 defaults, and harness CLI installs are not built yet. | maxstack |
 | One lifecycle command on every OS | The installer is PowerShell and declares itself Windows-only. It has `-Apply`, `-Status`, `-Remove`, `-Uninstall`, `-Update`, and `-Update -Check`. It selects runtimes and layers with `-Runtimes` and `-Layers`, and it sets layer sources with `-Source` or `-LayerSource`. The macOS wrappers are untested. | maxstack |
 | Generated harness config from one source | A standalone neutral layer generator writes skills for `claude`, `copilot`, `opencode`, and `pi`, and OpenCode MCP servers for `opencode` only. The installer does not call it. Codex, Cursor, and Antigravity get nothing. Instructions, agents, and hooks are not generated yet. | maxstack |
-| `.envrc` retired | The workspace root has an `.envrc`, dev-setup ships `settings/.envrc.example`, and both repositories' docs call it the secret-loading boundary. These files also need a follow-up when `.envrc` is retired: org-ai-plugin `skills/local-services` and `skills/service-integrations`, personal-ai-plugin `skills/dev-tools` and `skills/integrations-personal`, and maxstack `docs/relationship.md`. | dev-setup |
+| `.envrc` does not load secrets | A human reaches a secret only through `with-secrets [--offline] [--require NAMES] <tool>`, and agents through `with-vault --role agent`. The plugin and maxstack docs say so. A leftover workspace-root `.envrc` that imports secrets still exists and must be removed by hand. `with-secrets` warns when it finds one. dev-setup still ships `settings/.envrc.example`, which is a migration note only. | dev-setup |
 | Each model path is in the ownership record | The installer writes the Pi wrappers and records them in `stack.lock.json`. It uses a Pi installed in the workspace when one exists. The local model server and its Pi provider file are not owned by maxstack's ownership record yet. | maxstack |
 | The gate runs in every harness that can run a pre-tool hook | The gate runs in Claude Code, Copilot, OpenCode, and Pi only. There is no gate on Codex, Cursor, or Antigravity. See G1 in the [parity matrix](https://github.com/simpsonm09-org/simpsonm09-maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
 | pstack's own pre-tool checks run on every OS | The Copilot PreToolUse hook is a no-op stub on Windows for pstack's own checks, so the file-read and subagent-model checks do not run there. See G2 in the [parity matrix](https://github.com/simpsonm09-org/simpsonm09-maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
