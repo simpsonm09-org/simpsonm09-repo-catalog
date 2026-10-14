@@ -8,7 +8,7 @@ This page is the guiding document for the fleet. It names the four groups of rep
 
 | Group | Repositories | Answers |
 | --- | --- | --- |
-| AI tooling | `simpsonm09-maxstack`, `pstack-claude` (fork), `simpsonm09-org-ai-plugin`, `simpsonm09-personal-ai-plugin` | How does an agent session get its harness, its skills, and its rules? |
+| AI tooling | `simpsonm09-maxstack`, `pstack-max` (our fork of pstack-claude), `simpsonm09-org-ai-plugin`, `simpsonm09-personal-ai-plugin` | How does an agent session get its harness, its skills, and its rules? |
 | Human tooling | `simpsonm09-dev-setup` | Which tools does the person have, and how does a command get a secret? |
 | Reference | `simpsonm09-repo-standard`, `simpsonm09-repo-catalog`, `simpsonm09-repo-template` | What is in the fleet, what does "done" mean, and what may an agent do? |
 | Feature | Every other repository | What does the fleet build? |
@@ -18,7 +18,7 @@ flowchart TB
     Human(["Human"])
 
     subgraph AI["AI tooling"]
-        Pstack["pstack-claude fork<br/>base layer"]
+        Pstack["pstack-max<br/>base layer"]
         Org["org-ai-plugin<br/>general layer"]
         Personal["personal-ai-plugin<br/>person and machine layer"]
         Maxstack["maxstack<br/>composer and installer"]
@@ -93,7 +93,7 @@ Pi is the validation harness. It loads no third-party extensions. Its only exten
 
 The three plugin layers load in order, and a later layer wins where two layers set the same value.
 
-1. `pstack` is the base layer. It comes from the `plugins/pstack` folder of the `pstack-claude` fork at one pinned commit.
+1. `pstack` is the base layer. It comes from the `plugins/pstack` folder of pstack-max at one pinned commit.
 2. `simpsonm09-org-ai-plugin` is the general layer. It holds the skills, the integration registry, and the tool-call gate that apply to any person or machine.
 3. `simpsonm09-personal-ai-plugin` is the person and machine layer. It holds the skills that name one person's accounts and one machine.
 
@@ -156,11 +156,11 @@ The workspace rule follows from these jobs. Settings live in the workspace, not 
 
 | Repository | Owns | Does not own |
 | --- | --- | --- |
-| `pstack-claude` (fork) | The PStack plugin for every harness: skills, playbooks, hooks, and agent profiles. | The pin. maxstack holds it. |
+| `pstack-max` | The PStack plugin for every harness: skills, playbooks, hooks, and agent profiles. | The pin. maxstack holds it. |
 | `simpsonm09-org-ai-plugin` | General skills, the integration registry, and the gate that enforces the catalog's agent access level. | Any value that names a person, an account, or a machine. |
 | `simpsonm09-personal-ai-plugin` | The personal concretes: accounts, identities, and personal services. | A secret value. It says where a value comes from. |
 
-`pstack-claude` is a fork of a third-party repository. Changes stay on the fork. No pull request goes to a repository the organization does not own.
+PStack began as Lauren Tan's original in `cursor/plugins`. Michael Denyer ported it to Claude Code as pstack-claude, and pstack-max is our fork of that port. Changes stay in pstack-max. `chhoumann/t3-pstack` is a reference for a planned optional T3 dispatch overlay; nothing was copied from it. No pull request goes to a repository the organization does not own.
 
 ## Human tooling
 
@@ -202,7 +202,7 @@ Every repository outside the three groups above is a feature repository. It cons
 
 | The change | Repository |
 | --- | --- |
-| A skill, playbook, or hook that applies to any PStack user | `pstack-claude` fork |
+| A skill, playbook, or hook that applies to any PStack user | `pstack-max` |
 | A skill, registry entry, or gate rule that applies to anyone in the fleet | `simpsonm09-org-ai-plugin` |
 | An account, identity, or personal service | `simpsonm09-personal-ai-plugin` |
 | Layer order, the pstack pin, a harness, a T3 default, a harness CLI install | `simpsonm09-maxstack` |
