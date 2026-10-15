@@ -1,7 +1,7 @@
 const OWNED_OWNER = 'simpsonm09';
 const ACCESS_LEVEL = 'propose';
-const OWNER_PATTERN = /^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?(?![\s\S])/;
-const REPOSITORY_PATTERN = /^[A-Za-z0-9._-]{1,100}(?![\s\S])/;
+const OWNER_PATTERN = /^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$/;
+const REPOSITORY_PATTERN = /^[A-Za-z0-9._-]{1,100}$/;
 
 function isFullyQualifiedRepository(value) {
   if (typeof value !== 'string') return false;
