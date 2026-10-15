@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { validateOwnedForks } from './owned-forks.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -20,7 +21,13 @@ function listOrgRepos(org) {
 
 const roster = readJson('repos.json');
 const ignore = readJson('ignore.json');
+const ownedForks = readJson('owned-forks.json');
 const org = roster.org;
+const ownedForkErrors = validateOwnedForks(ownedForks);
+if (ownedForkErrors.length > 0) {
+  for (const error of ownedForkErrors) process.stderr.write(`validate: ${error}\n`);
+  process.exit(1);
+}
 const live = listOrgRepos(org);
 
 const rosterNames = new Set(roster.repos.map((entry) => entry.name));

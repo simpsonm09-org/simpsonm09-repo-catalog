@@ -27,6 +27,10 @@ aislop:
 test:
     mise run test
 
+# Run local owned-fork policy tests without querying GitHub.
+test-policy:
+    node --test test/owned-forks.test.mjs
+
 # Lint and test.
 verify: lint test
 

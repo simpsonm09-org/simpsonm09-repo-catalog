@@ -70,6 +70,27 @@ standard's [bypass actors table](https://github.com/simpsonm09-org/simpsonm09-re
 It is absent for `none`, `read`, and `propose`, mode `pull_request` for `merge`, and mode
 `always` for `full`. No actor id is recorded here.
 
+## Personally owned forks
+
+`owned-forks.json` records repositories owned by `simpsonm09` and the upstream repository
+each fork came from. It does not add a repository to the `simpsonm09-org` roster or change
+the organization membership reconciliation. Each entry names both repositories as
+fully qualified `owner/repository` identities. The target must belong to `simpsonm09`.
+The upstream records provenance and never grants write access.
+
+The collection accepts only `propose`. For a personally owned target, `propose` means an
+agent may push a branch and open a pull request. It does not allow merging or pushing to
+`main`. A third-party upstream never receives pull requests or writes from this policy.
+A missing policy file or malformed, duplicate, or unsupported entry fails local
+validation. This validator checks policy data only. It does not grant access in the
+installed gate.
+
+Deployment is staged. The repo-standard resolver must read `owned-forks.json`, and the
+organization plugin must add a target-aware adapter before this policy can affect gate
+decisions. The adapter must keep upstreams read-only and restrict `propose` to the owned
+target. Update pinned standard versions and apply the workspace after those changes land.
+Until then, pstack writes remain denied.
+
 The tier defaults.
 
 | Tier | Default |
