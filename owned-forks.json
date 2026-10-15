@@ -1,0 +1,9 @@
+{
+  "forks": [
+    {
+      "repository": "simpsonm09/pstack-max",
+      "upstream": "michael-denyer/pstack-claude",
+      "agentAccess": "propose"
+    }
+  ]
+}
