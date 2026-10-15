@@ -36,6 +36,23 @@ test('rejects malformed or unqualified identities', () => {
   assert.ok(validateOwnedForkEntry({ ...validFork, upstream: 'upstream' }, 0).some((error) => error.includes('.upstream')));
 });
 
+test('rejects line terminators anywhere in fork identities', () => {
+  const lineTerminators = ['\n', '\r', '\r\n', '\u2028', '\u2029'];
+  for (const terminator of lineTerminators) {
+    for (const field of ['repository', 'upstream']) {
+      const errors = validateOwnedForkEntry({ ...validFork, [field]: `${validFork[field]}${terminator}` }, 0);
+      assert.ok(errors.some((error) => error.includes(`.${field} must be a fully qualified`)),
+        `${field} accepted a trailing ${JSON.stringify(terminator)}`);
+    }
+    const ownerError = validateOwnedForkEntry({
+      ...validFork,
+      repository: `simpsonm09${terminator}/pstack-max`,
+    }, 0);
+    assert.ok(ownerError.some((error) => error.includes('.repository must be a fully qualified')),
+      `repository owner accepted ${JSON.stringify(terminator)}`);
+  }
+});
+
 test('rejects unsupported access levels and unknown policy fields', () => {
   assert.ok(validateOwnedForkEntry({ ...validFork, agentAccess: 'merge' }, 0).some((error) => error.includes('agentAccess')));
   assert.ok(validateOwnedForks({ forks: [validFork], org: 'simpsonm09-org' }).some((error) => error.includes('unknown field')));
