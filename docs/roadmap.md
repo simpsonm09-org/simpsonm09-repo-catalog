@@ -3,6 +3,11 @@
 The intent the roster does not carry: what the fleet is building next. State lives on
 GitHub; this page holds goals and open work.
 
+The inventory reviewed on 2026-10-14 found 17 catalog entries matching 17 live
+organization repositories. Fifteen consumers pinned repo-standard at `1a841ff`; the
+current standard is `a9bbf9e`, so the rollout remains open. These are a dated snapshot,
+not live counts.
+
 ## Goals
 
 1. Every repository ships code a reviewer trusts: real linting, tests that gate, and a
@@ -30,20 +35,21 @@ GitHub; this page holds goals and open work.
   `mise.toml` and run them through the shared lint job. See the standard's
   [`linting`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/linting.md).
 - CodeQL. A repository carries it when it has executable source in a language CodeQL
-  supports. It is never a required check. It is not yet on `simpsonm09-maxstack`,
-  `simpsonm09-dev-setup`, `simpsonm09-fixture-nest`, `simpsonm09-fixture-go`,
-  `simpsonm09-fixture-rust`, `simpsonm09-fixture-dotnet`, `simpsonm09-machine-inventory`,
-  or `simpsonm09-repo-template`. See the standard's
+  supports. It is never a required check. At the latest inventory review, CodeQL was
+  present on maxstack, dev-setup, and all four language fixtures. It was still missing
+  from `simpsonm09-machine-inventory` and `simpsonm09-repo-template`. See the standard's
   [`automation`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/automation.md#codeql).
-- Coverage. A repository with a coverage job requires `coverage / coverage`. The two
-  records repositories, `simpsonm09-repo-catalog` and `simpsonm09-machine-inventory`, are
-  excepted. `simpsonm09-maxstack` and `simpsonm09-dev-setup` are excepted as not
-  measurable in part, and are to be revisited, because their Node code could be measured.
-  The declaration is in the standard's
+- Coverage. A repository with a coverage job requires `coverage / coverage`. The four
+  current exceptions are `simpsonm09-repo-catalog`, `simpsonm09-machine-inventory`,
+  `simpsonm09-maxstack`, and `simpsonm09-dev-setup`. The maxstack and dev-setup exceptions
+  need a coverage pilot because their Node code can be measured. None of the four has a
+  coverage job. The declaration is in the standard's
   [`exceptions.json`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/exceptions.json).
   This repository holds no second declaration.
-- Verification. A per-repository verification skill, a container build smoke job for the
-  image repositories, and an end-to-end job for the Playwright and Postman repositories.
+- Verification. Audit which repositories have a verification skill, image build smoke job,
+  and end-to-end checks before defining the remaining gaps. Release workflows are present
+  on browser-calculator, Postman test utils, and Playwright API wrapper; this does not by
+  itself establish the scope of their verification or end-to-end checks.
 - Releases. The release workflow and a changelog are adopted in `simpsonm09-browser-calculator`,
   `simpsonm09-postman-test-utils`, and `simpsonm09-playwright-api-wrapper`. The other
   feature repositories and the fixtures have neither yet.
