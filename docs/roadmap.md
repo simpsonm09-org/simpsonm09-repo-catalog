@@ -56,9 +56,11 @@ not live counts.
 - Plugin identifiers. Align the OpenCode plugin ids with the repository names.
 - Agent access. The agent identity is defined in `repo-standard`: the App manifest, the
   `just create-agent-app` flow, the per-level bypass entry the ruleset apply script adds,
-  and the drift check `check-agent-access`. Still open: run the drift check against the
-  live rulesets, since it is local and not in CI, and confirm the App's private key is held
-  in Infisical. The committed `protect-main.json` requires one approval.
+  and the drift check `check-agent-access`. On 2026-10-15, the live drift check exited 0
+  for all 17 repositories in the catalog roster. The check is local and is not part of CI,
+  so run it again when rulesets change. Private-key storage remains unverified. Do not
+  infer storage from the drift check. The committed `protect-main.json` requires one
+  approval.
 
 ## How open work lands
 
