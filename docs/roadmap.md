@@ -3,9 +3,15 @@
 The intent the roster does not carry: what the fleet is building next. State lives on
 GitHub; this page holds goals and open work.
 
-The inventory reviewed on 2026-10-14 found 17 catalog entries matching 17 live
-organization repositories. Fifteen consumers pinned repo-standard at `1a841ff`; the
-current standard is `a9bbf9e`, so the rollout remains open. These are a dated snapshot,
+The 2026-10-15 roster review read local tracking refs, not a live GitHub fetch, and found
+the local, fork, and organization `main` refs agreeing in all 17 catalog repositories. A
+later inventory, dated 2026-10-16 UTC, read local tracking refs again and found all sixteen
+repositories that pin repo-standard on `5da7073`, the current standard `main`, so the
+consumer pin rollout is complete. `simpsonm09-maxstack`'s update in pull request #83 merged
+at `2026-10-16T02:51:54Z` as `0d17ea0`, with all 17 checks reporting SUCCESS for the exact
+head `8b4a283`, and the local, fork, and organization `main` refs all read `0d17ea0`. The
+standard's own caller CI template, `templates/caller-ci.yml`, still pins `a9bbf9e`, a
+separate onboarding gap, so full fleet alignment is not complete. These are dated snapshots,
 not live counts.
 
 ## Goals
