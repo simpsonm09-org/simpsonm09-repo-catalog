@@ -1,11 +1,11 @@
 {
   "org": "simpsonm09-org",
   "agentAccessDefaults": {
-    "standard": "propose",
-    "template": "propose",
-    "catalog": "propose",
-    "plugin": "propose",
-    "tooling": "propose",
+    "standard": "merge",
+    "template": "merge",
+    "catalog": "merge",
+    "plugin": "merge",
+    "tooling": "merge",
     "feature": "merge",
     "fixture": "read",
     "legacy": "none"
@@ -39,8 +39,7 @@
       "name": "simpsonm09-org-ai-plugin",
       "tier": "plugin",
       "adopted": true,
-      "agentAccess": "merge",
-      "rationale": "Organization config layer for agents, skills, and MCP. Agents may land reviewed plugin changes once all checks pass."
+      "rationale": "Organization config layer for agents, skills, and MCP."
     },
     {
       "name": "simpsonm09-personal-ai-plugin",

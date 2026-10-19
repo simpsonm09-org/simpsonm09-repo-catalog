@@ -95,11 +95,11 @@ The tier defaults.
 
 | Tier | Default |
 | --- | --- |
-| `standard` | `propose` |
-| `template` | `propose` |
-| `catalog` | `propose` |
-| `plugin` | `propose` |
-| `tooling` | `propose` |
+| `standard` | `merge` |
+| `template` | `merge` |
+| `catalog` | `merge` |
+| `plugin` | `merge` |
+| `tooling` | `merge` |
 | `feature` | `merge` |
 | `fixture` | `read` |
 | `legacy` | `none` |
