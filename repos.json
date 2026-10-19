@@ -39,7 +39,8 @@
       "name": "simpsonm09-org-ai-plugin",
       "tier": "plugin",
       "adopted": true,
-      "rationale": "Organization config layer for agents, skills, and MCP."
+      "agentAccess": "merge",
+      "rationale": "Organization config layer for agents, skills, and MCP. Agents may land reviewed plugin changes once all checks pass."
     },
     {
       "name": "simpsonm09-personal-ai-plugin",
