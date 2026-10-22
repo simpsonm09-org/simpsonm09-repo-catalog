@@ -91,6 +91,22 @@ decisions. The adapter must keep upstreams read-only and restrict `propose` to t
 target. Update pinned standard versions and apply the workspace after those changes land.
 Until then, pstack writes remain denied.
 
+## Personally owned repositories
+
+`owned-repositories.json` records exact `owner/repository` identities owned by
+`simpsonm09` that have no upstream repository. It is separate from `owned-forks.json`,
+which requires upstream provenance. Each record accepts only `repository` and
+`agentAccess`, and the only supported access level is `propose`. The validator rejects
+other owners, malformed identities, duplicates, unknown fields, and identities that
+collide with an owned-fork target or upstream.
+
+The committed `repositories` array is empty, so this policy grants no repository access.
+Local validation checks its shape before the validator queries the organization roster.
+The catalog entry alone does not change installed gate decisions. A separate reviewed
+resolver and plugin change is required before any record can affect those decisions.
+See [the owned-repository reference](docs/features/owned-repositories.md) for the file
+shape and validation errors.
+
 The tier defaults.
 
 | Tier | Default |
