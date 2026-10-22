@@ -12,4 +12,10 @@ Index for the catalog.
 
 - [`../repos.json`](../repos.json) is the roster.
 - [`../ignore.json`](../ignore.json) is the exclusion list.
+- [`../owned-forks.json`](../owned-forks.json) records owned forks and their upstreams.
+- [`../owned-repositories.json`](../owned-repositories.json) records exact owned repositories without upstreams.
 - [`../policy.md`](../policy.md) is the tier policy.
+
+## Features
+
+- [Owned repositories](features/owned-repositories.md) describes the standalone owned-repository policy.

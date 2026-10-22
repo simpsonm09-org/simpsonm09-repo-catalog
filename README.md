@@ -16,8 +16,9 @@ This repository holds only the intent that GitHub cannot report.
 - `repos.json` is the roster.
 - `ignore.json` lists the organization repositories that are out of the fleet.
 - `owned-forks.json` records personally owned forks and their upstream repositories.
+- `owned-repositories.json` records exact personal repository identities without upstreams.
 - `policy.md` describes the tiers and the expectations.
-- `scripts/validate.mjs` validates owned-fork policy locally, then checks the roster against the organization.
+- `scripts/validate.mjs` validates both owned-target policies locally, then checks the roster against the organization.
 
 ## Quick start
 
@@ -33,7 +34,7 @@ just verify
 | `just install` | Installs the pinned tools. |
 | `just lint` | Runs the linters. |
 | `just test` | Validates the roster against the organization. |
-| `just test-policy` | Runs local owned-fork policy tests without querying GitHub. |
+| `just test-policy` | Runs local owned-target policy tests without querying GitHub. |
 | `just verify` | Lints and tests. |
 
 ## Documentation
