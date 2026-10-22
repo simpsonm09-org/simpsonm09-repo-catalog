@@ -21,10 +21,10 @@ test('accepts an exact personal repository identity with propose access', () => 
   assert.deepEqual(validateOwnedRepositoryEntry(validRepository, 0), []);
 });
 
-test('accepts the committed empty policy', () => {
+test('accepts the committed exact profile grant', () => {
   const policy = JSON.parse(readFileSync(new URL('../owned-repositories.json', import.meta.url), 'utf8'));
   assert.deepEqual(validateOwnedRepositories(policy), []);
-  assert.deepEqual(policy.repositories, []);
+  assert.deepEqual(policy.repositories, [validRepository]);
 });
 
 test('matches the owner without regard to case', () => {

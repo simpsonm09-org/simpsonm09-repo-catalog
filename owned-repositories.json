@@ -1,3 +1,8 @@
 {
-  "repositories": []
+  "repositories": [
+    {
+      "repository": "simpsonm09/simpsonm09",
+      "agentAccess": "propose"
+    }
+  ]
 }
