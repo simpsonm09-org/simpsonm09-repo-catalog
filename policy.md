@@ -100,11 +100,15 @@ which requires upstream provenance. Each record accepts only `repository` and
 other owners, malformed identities, duplicates, unknown fields, and identities that
 collide with an owned-fork target or upstream.
 
-The committed `repositories` array is empty, so this policy grants no repository access.
-Local validation checks its shape before the validator queries the organization roster.
-The catalog entry alone does not change installed gate decisions. A separate reviewed
-resolver and plugin change is required before any record can affect those decisions.
-See [the owned-repository reference](docs/features/owned-repositories.md) for the file
+The committed policy grants `propose` to the exact identity `simpsonm09/simpsonm09`.
+That grant permits non-default branch pushes and pull requests within that same
+repository. It denies default-branch pushes, force pushes, deletions, tag pushes,
+merges, and administration. Local validation checks the record shape before the
+validator queries the organization roster. The record affects no installed gate until
+the runtime consumer uses the reviewed standard resolver and loads this policy from
+committed `upstream/main`. Catalog validation does not prove that an installed consumer
+has adopted that resolver or policy. See
+[the owned-repository reference](docs/features/owned-repositories.md) for the file
 shape and validation errors.
 
 The tier defaults.
