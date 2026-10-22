@@ -4,6 +4,21 @@
       "repository": "simpsonm09/pstack-max",
       "upstream": "michael-denyer/pstack-claude",
       "agentAccess": "propose"
+    },
+    {
+      "repository": "simpsonm09/pstack-opencode-plugin",
+      "upstream": "simpsonm09-org/pstack-opencode-plugin",
+      "agentAccess": "propose"
+    },
+    {
+      "repository": "simpsonm09/cursor-plugins",
+      "upstream": "cursor/plugins",
+      "agentAccess": "propose"
+    },
+    {
+      "repository": "simpsonm09/Win-CodexBar",
+      "upstream": "nesszer/Win-CodexBar",
+      "agentAccess": "propose"
     }
   ]
 }
