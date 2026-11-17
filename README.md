@@ -2,8 +2,10 @@
 
 The fleet roster and policy for the `simpsonm09-projects` organization.
 
-The original lives in `simpsonm09-projects/simpsonm09-repo-catalog`.
-See [`repo-standard`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard).
+This repository lives in `simpsonm09-projects/simpsonm09-repo-catalog`. Work happens on a branch
+with a pull request into `main`.
+See [`repo-standard`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard)
+for the branch model and the protection rules.
 
 ## What it does
 
