@@ -24,7 +24,10 @@ const roster = readJson('repos.json');
 const ignore = readJson('ignore.json');
 const ownedForks = readJson('owned-forks.json');
 const ownedRepositories = readJson('owned-repositories.json');
-const org = roster.org;
+// The organization may be renamed out of band, and the roster keeps the name it
+// was written with. In Actions, validate the owner that actually served the
+// checkout; locally, fall back to the roster's canonical name.
+const org = process.env.GITHUB_REPOSITORY_OWNER || roster.org;
 const ownedForkErrors = validateOwnedForks(ownedForks);
 const ownedRepositoryErrors = validateOwnedRepositories(ownedRepositories, ownedForks);
 const policyErrors = [...ownedForkErrors, ...ownedRepositoryErrors];
