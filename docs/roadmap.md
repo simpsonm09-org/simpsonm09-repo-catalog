@@ -39,18 +39,18 @@ not live counts.
 
 - Language linting. Pin the per-language linters and formatters in each repository's
   `mise.toml` and run them through the shared lint job. See the standard's
-  [`linting`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/linting.md).
+  [`linting`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard/blob/main/docs/linting.md).
 - CodeQL. A repository carries it when it has executable source in a language CodeQL
   supports. It is never a required check. At the latest inventory review, CodeQL was
   present on maxstack, dev-setup, and all four language fixtures. It was still missing
   from `simpsonm09-machine-inventory` and `simpsonm09-repo-template`. See the standard's
-  [`automation`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/automation.md#codeql).
+  [`automation`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard/blob/main/docs/automation.md#codeql).
 - Coverage. A repository with a coverage job requires `coverage / coverage`. The four
   current exceptions are `simpsonm09-repo-catalog`, `simpsonm09-machine-inventory`,
   `simpsonm09-maxstack`, and `simpsonm09-dev-setup`. The maxstack and dev-setup exceptions
   need a coverage pilot because their Node code can be measured. None of the four has a
   coverage job. The declaration is in the standard's
-  [`exceptions.json`](https://github.com/simpsonm09-org/simpsonm09-repo-standard/blob/main/docs/exceptions.json).
+  [`exceptions.json`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard/blob/main/docs/exceptions.json).
   This repository holds no second declaration.
 - Verification. Audit which repositories have a verification skill, image build smoke job,
   and end-to-end checks before defining the remaining gaps. Release workflows are present

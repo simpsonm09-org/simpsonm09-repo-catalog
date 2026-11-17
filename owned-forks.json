@@ -7,7 +7,7 @@
     },
     {
       "repository": "simpsonm09/pstack-opencode-plugin",
-      "upstream": "simpsonm09-org/pstack-opencode-plugin",
+      "upstream": "simpsonm09-projects/pstack-opencode-plugin",
       "agentAccess": "propose"
     },
     {

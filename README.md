@@ -1,9 +1,9 @@
 # repo-catalog
 
-The fleet roster and policy for the `simpsonm09-org` organization.
+The fleet roster and policy for the `simpsonm09-projects` organization.
 
-The original lives in `simpsonm09-org/simpsonm09-repo-catalog`.
-See [`repo-standard`](https://github.com/simpsonm09-org/simpsonm09-repo-standard).
+The original lives in `simpsonm09-projects/simpsonm09-repo-catalog`.
+See [`repo-standard`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard).
 
 ## What it does
 
@@ -47,5 +47,5 @@ MIT. See [`LICENSE`](LICENSE).
 
 ## Related repositories
 
-- [`repo-standard`](https://github.com/simpsonm09-org/simpsonm09-repo-standard) owns the shared CI, linting, security, and governance.
-- [`repo-template`](https://github.com/simpsonm09-org/simpsonm09-repo-template) is the reference implementation.
+- [`repo-standard`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard) owns the shared CI, linting, security, and governance.
+- [`repo-template`](https://github.com/simpsonm09-projects/simpsonm09-repo-template) is the reference implementation.

@@ -1,6 +1,6 @@
 # Architecture
 
-The catalog holds intent. [`repo-standard`](https://github.com/simpsonm09-org/simpsonm09-repo-standard)
+The catalog holds intent. [`repo-standard`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard)
 holds the checks. Each repository runs the checks against itself.
 
 ```mermaid
@@ -16,6 +16,6 @@ The roster answers which repositories are in the fleet and what tier each one ho
 reason. The validator fails when the roster and the organization disagree, so a new
 repository must be cataloged or explicitly ignored. Conformance is not the catalog's
 job. Each repository checks itself against the standard. See
-[`repo-standard`](https://github.com/simpsonm09-org/simpsonm09-repo-standard) for the checks.
+[`repo-standard`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard) for the checks.
 
 The wider fleet view, with the four groups and the open gaps, is in [Fleet architecture](fleet-architecture.md).
