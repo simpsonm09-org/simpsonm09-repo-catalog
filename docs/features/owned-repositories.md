@@ -1,7 +1,7 @@
 # Owned repositories
 
 `owned-repositories.json` records exact personal repository identities that have no
-upstream. It does not change the `simpsonm09-org` roster or grant access by itself.
+upstream. It does not change the `simpsonm09-projects` roster or grant access by itself.
 
 ## Policy shape
 
