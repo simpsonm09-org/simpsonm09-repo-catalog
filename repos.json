@@ -48,7 +48,7 @@
       "rationale": "Personal config layer."
     },
     {
-      "name": "simpsonm09-dev-setup",
+      "name": "dev-setup",
       "tier": "tooling",
       "adopted": true,
       "rationale": "Developer workspace tooling and machine setup."

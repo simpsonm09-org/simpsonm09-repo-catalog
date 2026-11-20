@@ -9,7 +9,7 @@ This page is the guiding document for the fleet. It names the four groups of rep
 | Group | Repositories | Answers |
 | --- | --- | --- |
 | AI tooling | `simpsonm09-maxstack`, `pstack-max` (our fork of pstack-claude), `simpsonm09-org-ai-plugin`, `simpsonm09-personal-ai-plugin` | How does an agent session get its harness, its skills, and its rules? |
-| Human tooling | `simpsonm09-dev-setup` | Which tools does the person have, and how does a command get a secret? |
+| Human tooling | `dev-setup` | Which tools does the person have, and how does a command get a secret? |
 | Reference | `simpsonm09-repo-standard`, `simpsonm09-repo-catalog`, `repo-template` | What is in the fleet, what does "done" mean, and what may an agent do? |
 | Feature | Every other repository | What does the fleet build? |
 
@@ -164,7 +164,7 @@ PStack began as Lauren Tan's original in `cursor/plugins`. Michael Denyer ported
 
 ## Human tooling
 
-`simpsonm09-dev-setup` is for the person, not the agent. It has two jobs.
+`dev-setup` is for the person, not the agent. It has two jobs.
 
 - **Tooling.** It installs the tools a person uses on a machine and applies their app settings. `tools.yaml` is the one hand-edited source, and the Brewfile and the winget list render from it.
 - **Secrets consumption.** It owns `settings/.env` and the wrappers that hand a secret to one command. `with-secrets [--offline] [--require NAMES] <tool>` is the human path. Agents use `with-vault --role agent <tool>`, where the tool never holds the token.
@@ -206,7 +206,7 @@ Every repository outside the three groups above is a feature repository. It cons
 | A skill, registry entry, or gate rule that applies to anyone in the fleet | `simpsonm09-org-ai-plugin` |
 | An account, identity, or personal service | `simpsonm09-personal-ai-plugin` |
 | Layer order, the pstack pin, a harness, a T3 default, a harness CLI install | `simpsonm09-maxstack` |
-| A human tool, an app setting, a secret name, a wrapper | `simpsonm09-dev-setup` |
+| A human tool, an app setting, a secret name, a wrapper | `dev-setup` |
 | A lint rule, a workflow, a ruleset, the definition of done | `simpsonm09-repo-standard` |
 | A new repository, a tier, an agent access level | `simpsonm09-repo-catalog` |
 | What a new repository starts with | `repo-template` |
