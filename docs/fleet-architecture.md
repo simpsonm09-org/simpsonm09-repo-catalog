@@ -8,7 +8,7 @@ This page is the guiding document for the fleet. It names the four groups of rep
 
 | Group | Repositories | Answers |
 | --- | --- | --- |
-| AI tooling | `simpsonm09-maxstack`, `pstack-max` (our fork of pstack-claude), `simpsonm09-org-ai-plugin`, `simpsonm09-personal-ai-plugin` | How does an agent session get its harness, its skills, and its rules? |
+| AI tooling | `maxstack`, `pstack-max` (our fork of pstack-claude), `org-ai-plugin`, `personal-ai-plugin` | How does an agent session get its harness, its skills, and its rules? |
 | Human tooling | `dev-setup` | Which tools does the person have, and how does a command get a secret? |
 | Reference | `repo-standard`, `repo-catalog`, `repo-template` | What is in the fleet, what does "done" mean, and what may an agent do? |
 | Feature | Every other repository | What does the fleet build? |
@@ -94,8 +94,8 @@ Pi is the validation harness. It loads no third-party extensions. Its only exten
 The three plugin layers load in order, and a later layer wins where two layers set the same value.
 
 1. `pstack` is the base layer. It comes from the `plugins/pstack` folder of pstack-max at one pinned commit.
-2. `simpsonm09-org-ai-plugin` is the general layer. It holds the skills, the integration registry, and the tool-call gate that apply to any person or machine.
-3. `simpsonm09-personal-ai-plugin` is the person and machine layer. It holds the skills that name one person's accounts and one machine.
+2. `org-ai-plugin` is the general layer. It holds the skills, the integration registry, and the tool-call gate that apply to any person or machine.
+3. `personal-ai-plugin` is the person and machine layer. It holds the skills that name one person's accounts and one machine.
 
 One layer is one plugin in every harness. Edit a layer in its own repository, never in an installed copy.
 
@@ -106,9 +106,9 @@ The fleet sorts its harnesses into two tiers. Each harness uses its own provider
 | Tier | Harnesses | Receives |
 | --- | --- | --- |
 | First | OpenCode, Codex, Claude Code, GitHub Copilot | The full set from the layers: skills, agents, hooks or gate, MCP servers, and instructions. Each piece a harness does not receive has a documented reason. |
-| Second | Pi, Cursor, Antigravity | Skills and instructions at minimum. Gaps are recorded in the [parity matrix](https://github.com/simpsonm09-projects/simpsonm09-maxstack/blob/main/docs/parity-matrix.md). |
+| Second | Pi, Cursor, Antigravity | Skills and instructions at minimum. Gaps are recorded in the [parity matrix](https://github.com/simpsonm09-projects/maxstack/blob/main/docs/parity-matrix.md). |
 
-The current gaps, as [maxstack's T3 setup](https://github.com/simpsonm09-projects/simpsonm09-maxstack/blob/main/docs/t3-setup.md) and the parity matrix record them:
+The current gaps, as [maxstack's T3 setup](https://github.com/simpsonm09-projects/maxstack/blob/main/docs/t3-setup.md) and the parity matrix record them:
 
 - Codex is not set up. maxstack writes no Codex runtime, config, or T3 instance.
 - Cursor and Antigravity receive none of the layers yet.
@@ -157,8 +157,8 @@ The workspace rule follows from these jobs. Settings live in the workspace, not 
 | Repository | Owns | Does not own |
 | --- | --- | --- |
 | `pstack-max` | The PStack plugin for every harness: skills, playbooks, hooks, and agent profiles. | The pin. maxstack holds it. |
-| `simpsonm09-org-ai-plugin` | General skills, the integration registry, and the gate that enforces the catalog's agent access level. | Any value that names a person, an account, or a machine. |
-| `simpsonm09-personal-ai-plugin` | The personal concretes: accounts, identities, and personal services. | A secret value. It says where a value comes from. |
+| `org-ai-plugin` | General skills, the integration registry, and the gate that enforces the catalog's agent access level. | Any value that names a person, an account, or a machine. |
+| `personal-ai-plugin` | The personal concretes: accounts, identities, and personal services. | A secret value. It says where a value comes from. |
 
 PStack began as Lauren Tan's original in `cursor/plugins`. Michael Denyer ported it to Claude Code as pstack-claude, and pstack-max is our fork of that port. Changes stay in pstack-max. `chhoumann/t3-pstack` is a reference for a planned optional T3 dispatch overlay; nothing was copied from it. No pull request goes to a repository the organization does not own.
 
@@ -203,9 +203,9 @@ Every repository outside the three groups above is a feature repository. It cons
 | The change | Repository |
 | --- | --- |
 | A skill, playbook, or hook that applies to any PStack user | `pstack-max` |
-| A skill, registry entry, or gate rule that applies to anyone in the fleet | `simpsonm09-org-ai-plugin` |
-| An account, identity, or personal service | `simpsonm09-personal-ai-plugin` |
-| Layer order, the pstack pin, a harness, a T3 default, a harness CLI install | `simpsonm09-maxstack` |
+| A skill, registry entry, or gate rule that applies to anyone in the fleet | `org-ai-plugin` |
+| An account, identity, or personal service | `personal-ai-plugin` |
+| Layer order, the pstack pin, a harness, a T3 default, a harness CLI install | `maxstack` |
 | A human tool, an app setting, a secret name, a wrapper | `dev-setup` |
 | A lint rule, a workflow, a ruleset, the definition of done | `repo-standard` |
 | A new repository, a tier, an agent access level | `repo-catalog` |
@@ -228,10 +228,10 @@ Each row is a difference between the target above and what the repositories hold
 | Generated harness config from one source | A standalone neutral layer generator writes skills for `claude`, `copilot`, `opencode`, and `pi`, and OpenCode MCP servers for `opencode` only. The installer does not call it. Codex, Cursor, and Antigravity get nothing. Instructions, agents, and hooks are not generated yet. | maxstack |
 | `.envrc` does not load secrets | A human reaches a secret only through `with-secrets [--offline] [--require NAMES] <tool>`, and agents through `with-vault --role agent`. The plugin and maxstack docs say so. A leftover workspace-root `.envrc` that imports secrets still exists and must be removed by hand. `with-secrets` warns when it finds one. dev-setup still ships `settings/.envrc.example`, which is a migration note only. | dev-setup |
 | Each model path is in the ownership record | The installer writes the Pi wrappers and records them in `stack.lock.json`. It uses a Pi installed in the workspace when one exists. The local model server and its Pi provider file are not owned by maxstack's ownership record yet. | maxstack |
-| The gate runs in every harness that can run a pre-tool hook | The gate runs in Claude Code, Copilot, OpenCode, and Pi only. There is no gate on Codex, Cursor, or Antigravity. See G1 in the [parity matrix](https://github.com/simpsonm09-projects/simpsonm09-maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
-| pstack's own pre-tool checks run on every OS | The Copilot PreToolUse hook is a no-op stub on Windows for pstack's own checks, so the file-read and subagent-model checks do not run there. See G2 in the [parity matrix](https://github.com/simpsonm09-projects/simpsonm09-maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
-| The gate fails closed on every path | The gate has paths that fail open silently. Claude allows a call when its hook is killed at the timeout, and a call runs with no gate and no error when `node` is not on the hook shell's PATH. See G3 in the [parity matrix](https://github.com/simpsonm09-projects/simpsonm09-maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
-| The gate's live path is proven on every harness that runs it | The OpenCode gate path is not proven end to end. OpenCode rewrites a denied command and does not block it, and the rewrite is not measured live. See G4 in the [parity matrix](https://github.com/simpsonm09-projects/simpsonm09-maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
+| The gate runs in every harness that can run a pre-tool hook | The gate runs in Claude Code, Copilot, OpenCode, and Pi only. There is no gate on Codex, Cursor, or Antigravity. See G1 in the [parity matrix](https://github.com/simpsonm09-projects/maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
+| pstack's own pre-tool checks run on every OS | The Copilot PreToolUse hook is a no-op stub on Windows for pstack's own checks, so the file-read and subagent-model checks do not run there. See G2 in the [parity matrix](https://github.com/simpsonm09-projects/maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
+| The gate fails closed on every path | The gate has paths that fail open silently. Claude allows a call when its hook is killed at the timeout, and a call runs with no gate and no error when `node` is not on the hook shell's PATH. See G3 in the [parity matrix](https://github.com/simpsonm09-projects/maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
+| The gate's live path is proven on every harness that runs it | The OpenCode gate path is not proven end to end. OpenCode rewrites a denied command and does not block it, and the rewrite is not measured live. See G4 in the [parity matrix](https://github.com/simpsonm09-projects/maxstack/blob/main/docs/parity-matrix.md). | org-ai-plugin, maxstack |
 
 **Sequence.** The work runs in this order. First, per-layer sources in the settings file. Then the read-only T3 snapshot and the drift report. Then harness CLI installs, with ownership. maxstack records only the CLIs it installed, and it never removes a CLI the person installed. Then T3 apply. Then macOS. Then the generator is wired into the installer. Then agents and hooks conversion. Cursor is the first new harness.
 
