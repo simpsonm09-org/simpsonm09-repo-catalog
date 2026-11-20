@@ -2,7 +2,7 @@
 
 The fleet roster and policy for the `simpsonm09-projects` organization.
 
-This repository lives in `simpsonm09-projects/simpsonm09-repo-catalog`. Work happens on a branch
+This repository lives in `simpsonm09-projects/repo-catalog`. Work happens on a branch
 with a pull request into `main`.
 See [`repo-standard`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard)
 for the branch model and the protection rules.

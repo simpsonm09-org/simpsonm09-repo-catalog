@@ -24,7 +24,7 @@
       "rationale": "Reference implementation of the standard."
     },
     {
-      "name": "simpsonm09-repo-catalog",
+      "name": "repo-catalog",
       "tier": "catalog",
       "adopted": true,
       "rationale": "Fleet roster and policy."
