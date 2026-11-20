@@ -1,7 +1,7 @@
 # Fleet policy
 
 The catalog answers which repositories the framework covers and what each one owes.
-The standard in [`repo-standard`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard)
+The standard in [`repo-standard`](https://github.com/simpsonm09-projects/repo-standard)
 answers what conformance means. This page records the intent that GitHub cannot
 report, so the checks have something to check against.
 
@@ -39,7 +39,7 @@ so a new repository cannot appear unnoticed.
 
 Each repository states how much an AI agent may do against the organization
 repository. The value is intent. GitHub has no such setting, and enforcement lives in
-[`repo-standard`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard), not
+[`repo-standard`](https://github.com/simpsonm09-projects/repo-standard), not
 here. Until an agent runs as an identity separate from the maintainer, the value is a
 documented policy, not a control.
 
@@ -56,17 +56,17 @@ otherwise the tier default.
 | `full` | Push to `main` or change settings. | The agent in the bypass list with mode `always`. The agent App requests no `administration` permission, so it cannot change settings or rulesets. |
 
 `propose` needs at least one required approval that the agent cannot give. The
-standard's committed [`protect-main.json`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard/blob/main/rulesets/protect-main.json)
+standard's committed [`protect-main.json`](https://github.com/simpsonm09-projects/repo-standard/blob/main/rulesets/protect-main.json)
 sets `required_approving_review_count` to `1`. Its only bypass actor is
 `OrganizationAdmin` in `pull_request` mode. This describes the committed file, not
 the live GitHub ruleset, which this catalog does not read. The agent App's bypass
 entry is not in that file. The standard's
-[`governance guide`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard/blob/main/docs/governance.md)
-and its [`agent-access guide`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard/blob/main/docs/features/agent-access.md)
+[`governance guide`](https://github.com/simpsonm09-projects/repo-standard/blob/main/docs/governance.md)
+and its [`agent-access guide`](https://github.com/simpsonm09-projects/repo-standard/blob/main/docs/features/agent-access.md)
 describe the App and the drift check.
 
 The fleet agent's GitHub App entry on each repository's `protect-main` ruleset follows the
-standard's [bypass actors table](https://github.com/simpsonm09-projects/simpsonm09-repo-standard/blob/main/docs/governance.md#bypass-actors).
+standard's [bypass actors table](https://github.com/simpsonm09-projects/repo-standard/blob/main/docs/governance.md#bypass-actors).
 It is absent for `none`, `read`, and `propose`, mode `pull_request` for `merge`, and mode
 `always` for `full`. No actor id is recorded here.
 

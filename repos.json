@@ -12,7 +12,7 @@
   },
   "repos": [
     {
-      "name": "simpsonm09-repo-standard",
+      "name": "repo-standard",
       "tier": "standard",
       "adopted": true,
       "rationale": "Owns the standard, the checkers, the reusable workflows, and the rulesets."
