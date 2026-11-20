@@ -46,7 +46,7 @@ not live counts.
   from `machine-inventory` and `repo-template`. See the standard's
   [`automation`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard/blob/main/docs/automation.md#codeql).
 - Coverage. A repository with a coverage job requires `coverage / coverage`. The four
-  current exceptions are `simpsonm09-repo-catalog`, `machine-inventory`,
+  current exceptions are `repo-catalog`, `machine-inventory`,
   `simpsonm09-maxstack`, and `dev-setup`. The maxstack and dev-setup exceptions
   need a coverage pilot because their Node code can be measured. None of the four has a
   coverage job. The declaration is in the standard's
