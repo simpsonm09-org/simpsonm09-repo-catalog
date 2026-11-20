@@ -18,7 +18,7 @@
       "rationale": "Owns the standard, the checkers, the reusable workflows, and the rulesets."
     },
     {
-      "name": "simpsonm09-repo-template",
+      "name": "repo-template",
       "tier": "template",
       "adopted": true,
       "rationale": "Reference implementation of the standard."

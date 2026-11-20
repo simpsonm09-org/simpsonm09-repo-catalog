@@ -43,7 +43,7 @@ not live counts.
 - CodeQL. A repository carries it when it has executable source in a language CodeQL
   supports. It is never a required check. At the latest inventory review, CodeQL was
   present on maxstack, dev-setup, and all four language fixtures. It was still missing
-  from `machine-inventory` and `simpsonm09-repo-template`. See the standard's
+  from `machine-inventory` and `repo-template`. See the standard's
   [`automation`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard/blob/main/docs/automation.md#codeql).
 - Coverage. A repository with a coverage job requires `coverage / coverage`. The four
   current exceptions are `simpsonm09-repo-catalog`, `machine-inventory`,
