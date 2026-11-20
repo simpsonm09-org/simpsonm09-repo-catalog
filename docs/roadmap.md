@@ -39,18 +39,18 @@ not live counts.
 
 - Language linting. Pin the per-language linters and formatters in each repository's
   `mise.toml` and run them through the shared lint job. See the standard's
-  [`linting`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard/blob/main/docs/linting.md).
+  [`linting`](https://github.com/simpsonm09-projects/repo-standard/blob/main/docs/linting.md).
 - CodeQL. A repository carries it when it has executable source in a language CodeQL
   supports. It is never a required check. At the latest inventory review, CodeQL was
   present on maxstack, dev-setup, and all four language fixtures. It was still missing
   from `machine-inventory` and `repo-template`. See the standard's
-  [`automation`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard/blob/main/docs/automation.md#codeql).
+  [`automation`](https://github.com/simpsonm09-projects/repo-standard/blob/main/docs/automation.md#codeql).
 - Coverage. A repository with a coverage job requires `coverage / coverage`. The four
   current exceptions are `repo-catalog`, `machine-inventory`,
   `simpsonm09-maxstack`, and `dev-setup`. The maxstack and dev-setup exceptions
   need a coverage pilot because their Node code can be measured. None of the four has a
   coverage job. The declaration is in the standard's
-  [`exceptions.json`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard/blob/main/docs/exceptions.json).
+  [`exceptions.json`](https://github.com/simpsonm09-projects/repo-standard/blob/main/docs/exceptions.json).
   This repository holds no second declaration.
 - Verification. Audit which repositories have a verification skill, image build smoke job,
   and end-to-end checks before defining the remaining gaps. Release workflows are present
@@ -70,7 +70,7 @@ not live counts.
 
 ## How open work lands
 
-The standard changes in `simpsonm09-repo-standard` first, then roll out to the fleet
+The standard changes in `repo-standard` first, then roll out to the fleet
 through same-repo pull requests on the organization. Each wave ends in a verified state,
 checked by each repository's own `standard` job, which runs `check-repo`. A maintainer
 may also run the standard's local `audit-fleet` over sibling checkouts. This local audit
