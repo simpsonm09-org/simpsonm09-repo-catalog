@@ -30,7 +30,7 @@
       "rationale": "Fleet roster and policy."
     },
     {
-      "name": "simpsonm09-maxstack",
+      "name": "maxstack",
       "tier": "plugin",
       "adopted": true,
       "rationale": "Plugin publishing and workspace install."
