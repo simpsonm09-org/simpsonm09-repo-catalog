@@ -43,10 +43,10 @@ not live counts.
 - CodeQL. A repository carries it when it has executable source in a language CodeQL
   supports. It is never a required check. At the latest inventory review, CodeQL was
   present on maxstack, dev-setup, and all four language fixtures. It was still missing
-  from `simpsonm09-machine-inventory` and `simpsonm09-repo-template`. See the standard's
+  from `machine-inventory` and `simpsonm09-repo-template`. See the standard's
   [`automation`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard/blob/main/docs/automation.md#codeql).
 - Coverage. A repository with a coverage job requires `coverage / coverage`. The four
-  current exceptions are `simpsonm09-repo-catalog`, `simpsonm09-machine-inventory`,
+  current exceptions are `simpsonm09-repo-catalog`, `machine-inventory`,
   `simpsonm09-maxstack`, and `simpsonm09-dev-setup`. The maxstack and dev-setup exceptions
   need a coverage pilot because their Node code can be measured. None of the four has a
   coverage job. The declaration is in the standard's
@@ -56,8 +56,8 @@ not live counts.
   and end-to-end checks before defining the remaining gaps. Release workflows are present
   on browser-calculator, Postman test utils, and Playwright API wrapper; this does not by
   itself establish the scope of their verification or end-to-end checks.
-- Releases. The release workflow and a changelog are adopted in `simpsonm09-browser-calculator`,
-  `simpsonm09-postman-test-utils`, and `simpsonm09-playwright-api-wrapper`. The other
+- Releases. The release workflow and a changelog are adopted in `browser-calculator`,
+  `postman-test-utils`, and `playwright-api-wrapper`. The other
   feature repositories and the fixtures have neither yet.
 - Plugin identifiers. Align the OpenCode plugin ids with the repository names.
 - Agent access. The agent identity is defined in `repo-standard`: the App manifest, the
