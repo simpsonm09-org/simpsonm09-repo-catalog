@@ -30,19 +30,19 @@
       "rationale": "Fleet roster and policy."
     },
     {
-      "name": "simpsonm09-maxstack",
+      "name": "maxstack",
       "tier": "plugin",
       "adopted": true,
       "rationale": "Plugin publishing and workspace install."
     },
     {
-      "name": "simpsonm09-org-ai-plugin",
+      "name": "org-ai-plugin",
       "tier": "plugin",
       "adopted": true,
       "rationale": "Organization config layer for agents, skills, and MCP."
     },
     {
-      "name": "simpsonm09-personal-ai-plugin",
+      "name": "personal-ai-plugin",
       "tier": "plugin",
       "adopted": true,
       "rationale": "Personal config layer."
