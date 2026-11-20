@@ -10,7 +10,7 @@ This page is the guiding document for the fleet. It names the four groups of rep
 | --- | --- | --- |
 | AI tooling | `simpsonm09-maxstack`, `pstack-max` (our fork of pstack-claude), `simpsonm09-org-ai-plugin`, `simpsonm09-personal-ai-plugin` | How does an agent session get its harness, its skills, and its rules? |
 | Human tooling | `simpsonm09-dev-setup` | Which tools does the person have, and how does a command get a secret? |
-| Reference | `simpsonm09-repo-standard`, `simpsonm09-repo-catalog`, `simpsonm09-repo-template` | What is in the fleet, what does "done" mean, and what may an agent do? |
+| Reference | `simpsonm09-repo-standard`, `simpsonm09-repo-catalog`, `repo-template` | What is in the fleet, what does "done" mean, and what may an agent do? |
 | Feature | Every other repository | What does the fleet build? |
 
 ```mermaid
@@ -181,7 +181,7 @@ The three reference repositories describe the fleet. They do not run it.
 | --- | --- | --- |
 | `simpsonm09-repo-catalog` | What is in the fleet, and what may an agent do in each repository? | The roster, the tiers, and the agent access levels. |
 | `simpsonm09-repo-standard` | What is best practice, and what does "done" mean? | The per-language lint and test rules, the reusable GitHub Actions workflows, the rulesets, and the conformance checker. |
-| `simpsonm09-repo-template` | What does a conforming repository look like? | A working reference implementation to start a new repository from. |
+| `repo-template` | What does a conforming repository look like? | A working reference implementation to start a new repository from. |
 
 The catalog holds intent, and the standard holds checks. Each repository runs the checks against itself in its own CI. No repository audits another.
 
@@ -209,7 +209,7 @@ Every repository outside the three groups above is a feature repository. It cons
 | A human tool, an app setting, a secret name, a wrapper | `simpsonm09-dev-setup` |
 | A lint rule, a workflow, a ruleset, the definition of done | `simpsonm09-repo-standard` |
 | A new repository, a tier, an agent access level | `simpsonm09-repo-catalog` |
-| What a new repository starts with | `simpsonm09-repo-template` |
+| What a new repository starts with | `repo-template` |
 | Product behavior | The feature repository |
 
 ## Gaps as of 2026-10-12

@@ -50,4 +50,4 @@ MIT. See [`LICENSE`](LICENSE).
 ## Related repositories
 
 - [`repo-standard`](https://github.com/simpsonm09-projects/simpsonm09-repo-standard) owns the shared CI, linting, security, and governance.
-- [`repo-template`](https://github.com/simpsonm09-projects/simpsonm09-repo-template) is the reference implementation.
+- [`repo-template`](https://github.com/simpsonm09-projects/repo-template) is the reference implementation.
