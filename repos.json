@@ -54,64 +54,64 @@
       "rationale": "Developer workspace tooling and machine setup."
     },
     {
-      "name": "simpsonm09-machine-inventory",
+      "name": "machine-inventory",
       "tier": "tooling",
       "adopted": true,
       "rationale": "Non-identifying inventory of the fleet machine classes, counts, and buckets."
     },
     {
-      "name": "simpsonm09-browser-calculator",
+      "name": "browser-calculator",
       "tier": "feature",
       "adopted": true,
       "rationale": "Feature repository used to exercise the standard end to end."
     },
     {
-      "name": "simpsonm09-postman-test-utils",
+      "name": "postman-test-utils",
       "tier": "feature",
       "adopted": true,
       "rationale": "Feature repository for Postman test utilities."
     },
     {
-      "name": "simpsonm09-playwright-api-wrapper",
+      "name": "playwright-api-wrapper",
       "tier": "feature",
       "adopted": true,
       "rationale": "Feature repository for a Playwright API wrapper."
     },
     {
-      "name": "simpsonm09-openclaw-homelab",
+      "name": "openclaw-homelab",
       "tier": "feature",
       "adopted": true,
       "rationale": "Feature repository for the homelab."
     },
     {
-      "name": "simpsonm09-pokeapi-wrapper",
+      "name": "pokeapi-wrapper",
       "tier": "feature",
       "adopted": true,
       "rationale": "Feature repository wrapping PokeAPI, and the reference implementation of the generated-OpenAPI contract rule."
     },
     {
-      "name": "simpsonm09-fixture-nest",
+      "name": "fixture-nest",
       "tier": "fixture",
       "adopted": true,
       "agentAccess": "propose",
       "rationale": "NestJS item CRUD fixture; validates the propose level."
     },
     {
-      "name": "simpsonm09-fixture-go",
+      "name": "fixture-go",
       "tier": "fixture",
       "adopted": true,
       "agentAccess": "full",
       "rationale": "Go item CRUD fixture; validates the full level."
     },
     {
-      "name": "simpsonm09-fixture-rust",
+      "name": "fixture-rust",
       "tier": "fixture",
       "adopted": true,
       "agentAccess": "merge",
       "rationale": "Rust item CRUD fixture; validates the merge level."
     },
     {
-      "name": "simpsonm09-fixture-dotnet",
+      "name": "fixture-dotnet",
       "tier": "fixture",
       "adopted": true,
       "agentAccess": "read",
