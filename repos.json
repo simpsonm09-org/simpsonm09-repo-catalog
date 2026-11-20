@@ -36,7 +36,7 @@
       "rationale": "Plugin publishing and workspace install."
     },
     {
-      "name": "simpsonm09-org-ai-plugin",
+      "name": "org-ai-plugin",
       "tier": "plugin",
       "adopted": true,
       "rationale": "Organization config layer for agents, skills, and MCP."
