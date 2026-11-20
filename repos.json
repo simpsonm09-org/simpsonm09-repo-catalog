@@ -42,7 +42,7 @@
       "rationale": "Organization config layer for agents, skills, and MCP."
     },
     {
-      "name": "simpsonm09-personal-ai-plugin",
+      "name": "personal-ai-plugin",
       "tier": "plugin",
       "adopted": true,
       "rationale": "Personal config layer."
